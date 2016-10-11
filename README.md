@@ -78,15 +78,15 @@ $ . 0-set-configure.sh
 参数为停止哪个控制节点上的哪个服务
 参数格式为：参数1（所停止控制节点的编号） 参数2（所停止服务的名称） 参数3（是否重启该服务，若是填"start"）
 例如：
-# . test-neutron.sh 01 start
+ . test-neutron.sh 01 start
 或
-# . stop-service.sh 02 neutron-openvswitch-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-ovs-cleanup.service neutron-server.service neutron-netns-cleanup.service neutron-l3-agent.service
+ . stop-service.sh 02 neutron-openvswitch-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service neutron-ovs-cleanup.service neutron-server.service neutron-netns-cleanup.service neutron-l3-agent.service
 
 （3）执行operation目下的操作脚本，查看输出
-# . operation/all-integration.sh
+ . operation/all-integration.sh
 
 （4）执行operation目下的删除脚本，删除测试产生的资源
-# . operation/delete-all-intergration.sh
+ . operation/delete-all-intergration.sh
 
 
 
