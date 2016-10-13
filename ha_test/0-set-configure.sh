@@ -17,3 +17,7 @@ vip=192.168.2.201
 external_network=public
 ### 新建网络的DNS
 dns=8.8.8.8
+### 新建网络的网段
+new_private_network=155.100.1.0/24
+### 外部网络主机地址
+external_host=www.baidu.com

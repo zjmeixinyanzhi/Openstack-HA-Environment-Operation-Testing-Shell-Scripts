@@ -3,7 +3,7 @@ name=`uuidgen`
 . $openrc
 neutron net-create demo-net-$name
 neutron net-list
-neutron subnet-create --name demo-subnet-$name --dns-nameserver $dns --gateway 155.100.1.1 $(neutron net-list|grep demo-net-|awk '{print $4}') 155.100.1.0/24
+neutron subnet-create --name demo-subnet-$name --dns-nameserver $dns --gateway $(echo $new_private_network|cut -d "." -f1-3).1 $(neutron net-list|grep demo-net-|awk '{print $4}') $new_private_network
 neutron subnet-list
 neutron router-create demo-router-$name
 neutron router-list
