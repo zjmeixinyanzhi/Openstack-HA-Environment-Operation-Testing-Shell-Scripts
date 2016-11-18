@@ -5,13 +5,13 @@ openrc=/root/keystonerc_admin
 base_location=/root/
 
 ### 已经存在虚拟机的子网IP
-known_vm_private_ip=155.100.3.5
+known_vm_private_ip=155.100.3.3
 
 ### 空闲的浮动IP
-floating_ip=192.168.2.28
+floating_ip=192.168.2.126
 
 ### HA VIP
-vip=192.168.2.201
+vip=192.168.2.211
 
 ### HA VIP
 external_network=public

@@ -6,6 +6,16 @@ openstack image create "demo-image-cirros-"$name   --file $base_location/ha_test
 openstack server create --flavor m1.tiny --image $(openstack image list |grep demo-image-cirros-|awk '{print $4}') --nic net-id=$(openstack network list |grep demo-net- |awk '{print $2}') --security-group default demo-vm-$name
 openstack ip floating add $floating_ip $(openstack server list|grep demo-vm-|awk '{print $4}')
 openstack server list
+### wait for vm being builded up
+stop_flag=no
+while [ "$stop_flag" = "no"  ]
+do
+  status=$(openstack server list|grep demo-vm- |awk '{print $6}')
+  if [ $status = "ACTIVE" ];then
+    stop_flag=yes
+  fi
+  echo "wating..."
+done
 ssh cirros@$floating_ip ping -c 5 $(echo $new_private_network|cut -d "." -f1-3).1
 ssh cirros@$floating_ip ping -c 5 $external_host
 cinder create --display-name demo-ceph-volume-$name --display-description "Cinder volume on Ceph" 2

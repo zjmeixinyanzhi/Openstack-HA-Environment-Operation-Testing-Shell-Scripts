@@ -6,6 +6,17 @@ neutron router-interface-delete $(neutron router-list |grep demo-router-|awk '{p
 neutron router-delete $(neutron router-list |grep demo-router-|awk '{print $4}')
 neutron router-list
 nova volume-detach  $(openstack server list|grep demo-vm-|awk '{print $4}') $(openstack volume list|grep demo-ceph-volume-|awk '{print $2}')
+### detach completely
+stop_flag=no
+while [ "$stop_flag" = "no"  ]
+do
+  status=$(cinder list|grep demo-ceph-volume-|awk '{print $14}')
+  if [ $status = "|" ];then
+    stop_flag=yes
+  fi
+  echo "wating volume detelet attaching..."
+done
+
 openstack server delete $(openstack server list|grep demo-vm-|awk '{print $4}')
 sed -i -e '/'"$floating_ip"'/d' /root/.ssh/known_hosts
 openstack server list
