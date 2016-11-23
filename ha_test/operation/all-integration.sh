@@ -3,7 +3,7 @@ name=`uuidgen`
 . $openrc
 . $base_location/ha_test/operation/create-net.sh no
 openstack image create "demo-image-cirros-"$name   --file $base_location/ha_test/operation/cirros.raw --disk-format raw --container-format bare   --public
-openstack server create --flavor m1.tiny --image $(openstack image list |grep demo-image-cirros-|awk '{print $4}') --nic net-id=$(openstack network list |grep demo-net- |awk '{print $2}') --security-group default demo-vm-$name
+openstack server create --flavor m1.tiny --image $(openstack image list |grep demo-image-cirros-|awk '{print $4}'|head -n 1) --nic net-id=$(openstack network list |grep demo-net- |awk '{print $2}'|head -n 1) --security-group default demo-vm-$name
 openstack ip floating add $floating_ip $(openstack server list|grep demo-vm-|awk '{print $4}')
 openstack server list
 ### wait for vm being builded up

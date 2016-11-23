@@ -11,11 +11,15 @@ stop_flag=no
 while [ "$stop_flag" = "no"  ]
 do
   status=$(cinder list|grep demo-ceph-volume-|awk '{print $14}')
-  if [ $status = "|" ];then
+  if [ -z $status ];then
     stop_flag=yes
+  elif [ $status = "|" ];then
+    stop_flag=yes
+  else
+    echo "wating volume detelet attaching..."
   fi
-  echo "wating volume detelet attaching..."
 done
+
 
 openstack server delete $(openstack server list|grep demo-vm-|awk '{print $4}')
 sed -i -e '/'"$floating_ip"'/d' /root/.ssh/known_hosts
