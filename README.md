@@ -12,7 +12,6 @@ $ vim 0-set-configure.sh
 openrc=/root/keystonerc_admin
 ### ha_test文件夹所在位置
 base_location=/root/
-
 ### 已经存在虚拟机的子网IP
 known_vm_private_ip=155.100.3.5
 ### 空闲的浮动IP
