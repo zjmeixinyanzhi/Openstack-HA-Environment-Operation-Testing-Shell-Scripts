@@ -1,6 +1,6 @@
 # Openstack HA云平台服务高可用测试脚本
 ## 1、脚本介绍
-Openstack-HA-Environment-Operation-Testing-Shell-Scripts为Openstack HA环境下测试各服务组件高可用性的shell脚本集，通过这些CLI脚本可以代替在Dashboard中手动测试工作，可以方便地测试当前openstack HA部署架构下各个服务的能够达到高可用。
+Openstack-HA-Environment-Operation-Testing-Shell-Scripts为Openstack HA环境下测试各服务组件高可用性的shell脚本集，通过这些CLI脚本可以代替在Dashboard中手动测试工作，可以方便地测试当前openstack HA部署架构下各个服务的是否能够达到高可用。
 
 ## 2、用法
 
